@@ -5,12 +5,17 @@ import com.tobi.springbook.user.dao.UserDao;
 import com.tobi.springbook.user.domain.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 @SpringBootApplication
 public class SpringbookApplication {
 
 	public static void main(String[] args) {
 //		SpringApplication.run(SpringbookApplication.class, args);
+
+		ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+		UserDao userDaoBean = context.getBean("userDaoBean", UserDao.class);
 
 		User user = new User();
 		user.setName("유저1");
@@ -23,14 +28,14 @@ public class SpringbookApplication {
 		user2.setPassword("이제될걸");
 
 		DaoFactory daoFactory = new DaoFactory();
-		UserDao userDao = daoFactory.userDao();
-		userDao.add(user);
-		userDao.add(user1);
-		userDao.add(user2);
+		UserDao userDao = daoFactory.userDaoBean();
+		userDaoBean.add(user);
+		userDaoBean.add(user1);
+		userDaoBean.add(user2);
 
-		userDao.get(1L);
-		userDao.get(2L);
-		userDao.get(3L);
+		userDaoBean.get(1L);
+		userDaoBean.get(2L);
+		userDaoBean.get(3L);
 	}
 
 }
