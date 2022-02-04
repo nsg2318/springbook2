@@ -4,7 +4,7 @@ package com.tobi.springbook.user.dao.F_daoFactory;
 import com.tobi.springbook.user.dao.D_makerInterface.RepositoryMaker;
 
 //UserDaoTest(Main) 에서 필요치 않게 책임을 가진 부분 분리
-public class DaoFactory {
+public class DaoFactoryLegacy {
   public UserDaoV4 userDaoV4() {
     return new UserDaoV4(getRepositoryMakerV4());
   }
