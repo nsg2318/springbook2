@@ -1,5 +1,7 @@
 package com.tobi.springbook.user.domain;
 
+
+
 public class User {
   Long id;
   String name;

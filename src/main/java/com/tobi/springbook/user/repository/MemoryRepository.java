@@ -1,6 +1,5 @@
 package com.tobi.springbook.user.repository;
 
-
 import com.tobi.springbook.user.domain.User;
 
 import java.util.HashMap;
