@@ -3,7 +3,7 @@ package com.tobi.springbook.user.dao;
 import com.tobi.springbook.user.domain.User;
 import com.tobi.springbook.user.repository.Repository;
 
-public class UserDao {
+public class UserDaoDetail {
 
   public void add(User user) {
 
