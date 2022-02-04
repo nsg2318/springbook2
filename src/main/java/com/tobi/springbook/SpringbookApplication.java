@@ -1,8 +1,6 @@
 package com.tobi.springbook;
 
-import com.tobi.springbook.user.dao.UserDaoDetail;
-import com.tobi.springbook.user.dao.abstractModule.NaverUserDao;
-import com.tobi.springbook.user.dao.abstractModule.UserDaoAbstract;
+import com.tobi.springbook.user.dao.D_makerInterface.UserDaoV2;
 import com.tobi.springbook.user.domain.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,19 +8,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringbookApplication {
 
 	public static void main(String[] args) {
-//		SpringApplication.run(SpringbookApplication.class, args);
 
-//		UserDaoDetail userDaoDetail = new UserDaoDetail();
-		UserDaoAbstract userDaoAbstract = new NaverUserDao();
+		UserDaoV2 userDao = new UserDaoV2();
 		User user = new User();
 		user.setName("SUNBA");
 		user.setPassword("COUPLE");
 
-		userDaoAbstract.add(user);
+		userDao.add(user);
 
 		System.out.println(user.getName()+" -> 등록 성공");
 
-		User user1 = userDaoAbstract.get(1L);
+		User user1 = userDao.get(1L);
 		System.out.println(user1.getPassword()+ " -> 비번 추출 성공");
 	}
 

@@ -1,4 +1,4 @@
-package com.tobi.springbook.user.dao.abstractModule;
+package com.tobi.springbook.user.dao.B_abstractModule;
 
 import com.tobi.springbook.user.domain.User;
 import com.tobi.springbook.user.repository.Repository;
