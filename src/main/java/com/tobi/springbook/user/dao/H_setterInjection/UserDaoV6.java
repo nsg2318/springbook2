@@ -7,10 +7,9 @@ public class UserDaoV6 {
 
 
   //인터페이스로 확장가능하게.
-  private final RepositoryMakerV6 repositoryMaker;
+  public RepositoryMakerV6 repositoryMaker;
 
-  //생성자를 통한 외부 주입
-  public UserDaoV6(RepositoryMakerV6 repositoryMaker) {
+  public void setRepositoryMaker(RepositoryMakerV6 repositoryMaker) {
     this.repositoryMaker = repositoryMaker;
   }
 

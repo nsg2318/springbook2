@@ -8,8 +8,10 @@ import org.springframework.context.annotation.Configuration;
 public class DaoFactory {
 
   @Bean
-  public UserDaoV6 userDaoV5() {
-    return new UserDaoV6(getRepositoryMakerV6());
+  public UserDaoV6 userDaoV6() {
+    UserDaoV6 userDaoV6 = new UserDaoV6();
+    userDaoV6.setRepositoryMaker(getRepositoryMakerV6());
+    return userDaoV6;
   }
 
   @Bean
