@@ -19,4 +19,9 @@ public class Repository {
     User user = store.get(userId);
     return user;
   }
+
+  public void deleteAll() {
+    store.clear();
+    sequence = 0L;
+  }
 }

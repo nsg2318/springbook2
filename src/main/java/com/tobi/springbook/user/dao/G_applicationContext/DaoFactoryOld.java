@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DaoFactory {
+public class DaoFactoryOld {
 
   @Bean
   public UserDaoV5 userDaoV5() {

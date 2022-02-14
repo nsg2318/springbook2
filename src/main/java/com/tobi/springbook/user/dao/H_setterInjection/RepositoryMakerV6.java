@@ -4,4 +4,6 @@ import com.tobi.springbook.user.repository.Repository;
 
 public interface RepositoryMakerV6 {
   Repository makeRepository();
+
+  void deleteAll();
 }

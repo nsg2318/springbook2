@@ -38,5 +38,8 @@ public class UserDaoV6 {
     return user;
   }
 
+  public void deleteAll() {
+    repositoryMaker.deleteAll();
+  }
 }
 
