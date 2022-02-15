@@ -6,4 +6,6 @@ public interface RepositoryMakerV6 {
   Repository makeRepository();
 
   void deleteAll();
+
+  int getCount();
 }

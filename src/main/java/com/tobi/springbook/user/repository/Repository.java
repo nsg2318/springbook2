@@ -24,4 +24,8 @@ public class Repository {
     store.clear();
     sequence = 0L;
   }
+
+  public int getCount() {
+    return store.size();
+  }
 }

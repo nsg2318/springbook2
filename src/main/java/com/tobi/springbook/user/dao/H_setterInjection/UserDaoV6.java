@@ -41,5 +41,10 @@ public class UserDaoV6 {
   public void deleteAll() {
     repositoryMaker.deleteAll();
   }
+
+  public int getCount() {
+    return repositoryMaker.
+        getCount();
+  }
 }
 

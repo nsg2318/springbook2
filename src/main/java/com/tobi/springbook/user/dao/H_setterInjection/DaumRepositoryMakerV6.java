@@ -16,4 +16,9 @@ public class DaumRepositoryMakerV6 implements RepositoryMakerV6 {
     System.out.println("deleteAll");
     repository.deleteAll();
   }
+
+  @Override
+  public int getCount() {
+    return repository.getCount();
+  }
 }
