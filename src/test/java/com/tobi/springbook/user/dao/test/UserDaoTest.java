@@ -4,51 +4,61 @@ import com.tobi.springbook.user.dao.H_setterInjection.DaoFactory;
 import com.tobi.springbook.user.dao.H_setterInjection.UserDaoV6;
 import com.tobi.springbook.user.domain.User;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+
+@ExtendWith(SpringExtension.class)
+@SpringBootTest(classes = DaoFactory.class)
 public class UserDaoTest {
 
+  private UserDaoV6 userDao;
+  private User user;
+  private User user1;
 
 
+  @Autowired
+  private AnnotationConfigApplicationContext annotationConfigApplicationContext;
+
+  @BeforeEach
+  void setUp() {
+//    AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
+    this.userDao = annotationConfigApplicationContext.getBean("userDaoV6", UserDaoV6.class);
+    this.user = new User("SUNBA", "COUPLE");
+    this.user1 = new User("클리어후", "클리어후패스");
+
+
+  }
 
   @Test
   public void 애드와겟() {
-
-    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
-    UserDaoV6 userDao = applicationContext.getBean("userDaoV6", UserDaoV6.class);
-
-    User user = new User();
-    user.setName("SUNBA");
-    user.setPassword("COUPLE");
     userDao.add(user);
-
     userDao.deleteAll();
-
-    User user2 = new User();
-    user2.setName("클리어후");
-    user2.setPassword("클리어후패스");
-    userDao.add(user2);
-
+    userDao.add(user1);
     Assertions.assertThat(userDao.get(1L).getName()).isEqualTo("클리어후");
   }
 
 
   @Test
   public void 겟카운트테스트() {
-    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
-    UserDaoV6 userDao = applicationContext.getBean("userDaoV6", UserDaoV6.class);
-
-    userDao.deleteAll();
-    int count = userDao.getCount();
-    System.out.println("count = " + count);
-
-    User user = new User();
     userDao.add(user);
-    user.setName("aa");
-    user.setPassword("aa");
-    System.out.println(userDao.getCount());
+    userDao.deleteAll();
+    userDao.add(user1);
+    Assertions.assertThat(userDao.getCount()).isEqualTo(1);
+  }
+
+  @Test
+  public void 예외던지기테스트_Junit5() {
+    userDao.add(user);
+    userDao.deleteAll();
+    userDao.get(1L);
+    //???
+
+
   }
 }
